@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Submission | AI-TOOLS Directory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2B3DE8;
+            --dark: #0F1117;
+            --accent: #6EE7B7;
+            --gray-1: #f5f7fb;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --radius: 12px;
+        }
+
+        body {
+            background: var(--gray-1);
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 48px;
+            height: 64px;
+            background: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .track-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-family: 'Syne', sans-serif;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #1f2fc0;
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .status-result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .status-result.show {
+            display: block;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            border: 2px solid #fbbf24;
+            color: #92400e;
+        }
+
+        .status-approved {
+            background: #dcfce7;
+            border: 2px solid #86efac;
+            color: #166534;
+        }
+
+        .status-rejected {
+            background: #fee2e2;
+            border: 2px solid #fca5a5;
+            color: #991b1b;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            border: 2px solid #fca5a5;
+            color: #991b1b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .status-details {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .status-details strong {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 4px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: var(--primary);
+            margin-top: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo"><a href="home.html">AI-TOOLS</a></div>
+    </nav>
+
+    <!-- Container -->
+    <div class="container">
+        <div class="track-card">
+            <h1>Track Your Submission</h1>
+            <p class="subtitle">Enter your Submission ID to check the status of your tool listing.</p>
+
+            <form id="trackForm">
+                <div class="form-group">
+                    <label for="submissionId">Submission ID</label>
+                    <input 
+                        type="text" 
+                        id="submissionId" 
+                        placeholder="Enter your Submission ID (e.g., 550e8400-e29b-41d4-a716-446655440000)" 
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn">Track Submission</button>
+            </form>
+
+            <div class="loading" id="loading">
+                ⏳ Checking submission status...
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <div class="status-result" id="statusResult">
+                <div id="statusContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 TechGeekBuzz. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('trackForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submissionId = document.getElementById('submissionId').value.trim();
+            const loading = document.getElementById('loading');
+            const errorMsg = document.getElementById('errorMessage');
+            const statusResult = document.getElementById('statusResult');
+            const statusContent = document.getElementById('statusContent');
+
+            // Reset messages
+            errorMsg.classList.remove('show');
+            statusResult.classList.remove('show');
+            loading.classList.add('show');
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/tools/submission/${submissionId}`);
+                const data = await response.json();
+
+                loading.classList.remove('show');
+
+                if (response.ok) {
+                    const status = data.status;
+                    const statusMap = {
+                        pending: { icon: '⏳', text: 'Under Review', color: 'status-pending' },
+                        approved: { icon: '✅', text: 'Approved', color: 'status-approved' },
+                        rejected: { icon: '❌', text: 'Rejected', color: 'status-rejected' }
+                    };
+
+                    const statusInfo = statusMap[status] || statusMap.pending;
+
+                    statusContent.innerHTML = `
+                        <div class="status-badge">${statusInfo.icon} ${statusInfo.text}</div>
+                        <div class="status-details">
+                            <strong>Tool Name:</strong>
+                            ${data.name}
+                            <strong>Status:</strong>
+                            ${statusInfo.text}
+                            <strong>Submitted:</strong>
+                            ${new Date(data.submittedAt).toLocaleString()}
+                        </div>
+                    `;
+
+                    statusResult.className = `status-result show ${statusInfo.color}`;
+                } else {
+                    errorMsg.textContent = data.error || 'Submission not found';
+                    errorMsg.classList.add('show');
+                }
+            } catch (error) {
+                loading.classList.remove('show');
+                console.error('Error:', error);
+                errorMsg.textContent = '❌ Unable to connect to server. Make sure the backend is running on http://localhost:5000';
+                errorMsg.classList.add('show');
+            }
+        });
+
+        // Check URL for submission ID parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const idFromUrl = urlParams.get('id');
+        if (idFromUrl) {
+            document.getElementById('submissionId').value = idFromUrl;
+        }
+    </script>
+
+</body>
+</html>

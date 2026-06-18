@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">AI Tool Details | AI-TOOLS Directory</title>
+    <meta name="description" id="pageDesc" content="Detailed information about this AI tool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo"><a href="home.html">AI-TOOLS</a></div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="index.html">AI Tools</a></li>
+            <li><a href="submit.html">Submit Tool</a></li>
+        </ul>
+        <a href="submit.html" class="nav-cta">+ Submit Tool</a>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+        <div class="breadcrumb-inner">
+            <a href="home.html">Home</a>
+            <span>/</span>
+            <a href="index.html">AI Tools</a>
+            <span>/</span>
+            <span id="breadcrumbName">Tool</span>
+        </div>
+    </div>
+
+    <!-- Tool Detail Hero -->
+    <section class="tool-detail-hero">
+        <div class="tool-detail-hero-inner">
+            <div class="tool-detail-left">
+                <div class="tool-detail-logo" id="toolLogo">🤖</div>
+                <div class="tool-detail-info">
+                    <div class="tool-detail-meta">
+                        <span class="tool-detail-category" id="toolCategory">Category</span>
+                        <span class="tool-detail-badge" id="toolBadge" style="display:none"></span>
+                    </div>
+                    <h1 id="toolName">Tool Name</h1>
+                    <p id="toolDescription">Tool description goes here.</p>
+                    <div class="tool-detail-actions">
+                        <a href="#" id="toolVisitBtn" target="_blank" rel="noopener" class="btn-visit-tool">
+                            Visit Tool <span class="ext-icon">↗</span>
+                        </a>
+                        <a href="index.html" class="btn-back-list">← Back to Directory</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tool Content -->
+    <div class="tool-detail-body">
+        <div class="tool-detail-grid">
+
+            <!-- Left: Main Content -->
+            <div class="tool-detail-main">
+
+                <!-- About -->
+                <div class="tool-section-card">
+                    <h2>About <span id="toolNameInline">this tool</span></h2>
+                    <p id="toolAbout">Loading tool information...</p>
+                </div>
+
+                <!-- Key Features -->
+                <div class="tool-section-card">
+                    <h2>Key Features</h2>
+                    <ul class="tool-features-list" id="toolFeatures">
+                        <li>Loading features...</li>
+                    </ul>
+                </div>
+
+                <!-- Use Cases -->
+                <div class="tool-section-card">
+                    <h2>Best Use Cases</h2>
+                    <div class="use-cases-grid" id="toolUseCases">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Sidebar -->
+            <div class="tool-detail-sidebar">
+
+                <!-- Quick Info Card -->
+                <div class="sidebar-card">
+                    <h3>Quick Info</h3>
+                    <div class="sidebar-info-list">
+                        <div class="sidebar-info-row">
+                            <span class="sidebar-label">Category</span>
+                            <span class="sidebar-value" id="sidebarCategory">—</span>
+                        </div>
+                        <div class="sidebar-info-row">
+                            <span class="sidebar-label">Pricing</span>
+                            <span class="sidebar-value" id="sidebarPricing">—</span>
+                        </div>
+                        <div class="sidebar-info-row">
+                            <span class="sidebar-label">Platform</span>
+                            <span class="sidebar-value" id="sidebarPlatform">—</span>
+                        </div>
+                        <div class="sidebar-info-row">
+                            <span class="sidebar-label">Best For</span>
+                            <span class="sidebar-value" id="sidebarBestFor">—</span>
+                        </div>
+                    </div>
+                    <a href="#" id="sidebarVisitBtn" target="_blank" rel="noopener" class="btn-secondary" style="display:block; text-align:center; margin-top:18px;">
+                        Visit Website →
+                    </a>
+                </div>
+
+                <!-- Submit Your Tool CTA -->
+                <div class="sidebar-card sidebar-cta">
+                    <div class="sidebar-cta-icon">🚀</div>
+                    <h3>List Your AI Tool</h3>
+                    <p>Reach thousands of users searching for AI solutions daily.</p>
+                    <a href="submit.html" class="btn-secondary" style="display:block; text-align:center; margin-top:14px;">Submit Tool →</a>
+                </div>
+
+                <!-- Related Tools -->
+                <div class="sidebar-card">
+                    <h3>Related Tools</h3>
+                    <div class="related-tools-list" id="relatedTools">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">AI-TOOLS</div>
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="index.html">AI Tools</a>
+                <a href="submit.html">Submit Tool</a>
+            </div>
+            <p>© 2026 TechGeekBuzz. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+    // ---- TOOL DETAIL PAGE LOGIC ----
+
+    const categoryEmojis = {
+        "Code Assistant": "💻",
+        "Low-Code/No-Code": "🧩",
+        "SQL": "🗄️",
+        "Writing Generators": "✍️",
+        "Copywriting": "📝",
+        "Paraphrasing": "🔄",
+        "Storyteller": "📖",
+        "Prompt Generators": "⚡",
+        "Image Generation": "🎨",
+        "Image Editing": "🖼️",
+        "Art & Design": "🎭"
+    };
+
+    const toolDetails = {
+        "GitHub Copilot": {
+            about: "GitHub Copilot is an AI-powered code completion tool developed by GitHub and OpenAI. It integrates directly into your code editor (VS Code, JetBrains, Neovim, and more) and suggests entire lines or blocks of code as you type, helping developers write code faster and with fewer errors. It's trained on billions of lines of public code and understands dozens of programming languages.",
+            features: [
+                "Real-time code suggestions as you type",
+                "Supports 30+ programming languages including Python, JavaScript, TypeScript, Go, Ruby",
+                "Context-aware completions based on your entire codebase",
+                "Natural language to code conversion via comments",
+                "Integrated with VS Code, JetBrains IDEs, Neovim, and Visual Studio",
+                "GitHub Copilot Chat for conversational coding assistance"
+            ],
+            useCases: ["Code Completion", "Bug Fixing", "Code Review", "Documentation", "Unit Tests", "Refactoring"],
+            pricing: "Free / $10/mo",
+            platform: "VS Code, JetBrains, Web",
+            bestFor: "Developers & Teams"
+        },
+        "Cursor": {
+            about: "Cursor is an AI-first code editor built as a fork of VS Code. Unlike plugin-based AI coding tools, Cursor puts AI at the core of the editing experience. It can understand your entire codebase, answer questions about your code, make multi-file edits, and even predict what you'll want to do next. Cursor is rapidly becoming the go-to editor for AI-assisted development.",
+            features: [
+                "Codebase-wide AI understanding and Q&A",
+                "Multi-file intelligent edits with one command",
+                "Tab completion that predicts your next edit",
+                "Built-in chat with Claude, GPT-4, and other models",
+                "VS Code compatible — import all your extensions",
+                "Composer mode for larger, complex coding tasks"
+            ],
+            useCases: ["Codebase Navigation", "Multi-file Edits", "AI Pair Programming", "Code Q&A", "Refactoring", "Bug Hunting"],
+            pricing: "Free / $20/mo",
+            platform: "Mac, Windows, Linux",
+            bestFor: "Developers"
+        },
+        "Bubble": {
+            about: "Bubble is the leading no-code platform that lets you build fully functional web applications without writing a single line of code. With its visual drag-and-drop editor, database management, and workflow automation, Bubble makes it possible for non-technical founders and entrepreneurs to launch complex products — from marketplaces to SaaS apps — quickly and affordably.",
+            features: [
+                "Visual drag-and-drop web app builder",
+                "Built-in database with relationships and privacy rules",
+                "Workflow automation engine for business logic",
+                "Plugin ecosystem with 1000+ integrations",
+                "Responsive design for mobile and desktop",
+                "Custom domain and deployment with one click"
+            ],
+            useCases: ["SaaS Prototypes", "Marketplaces", "Internal Tools", "MVPs", "Web Apps", "Automations"],
+            pricing: "Free / $29/mo+",
+            platform: "Web Browser",
+            bestFor: "Non-technical Founders"
+        },
+        "AI2sql": {
+            about: "AI2sql is an AI-powered tool that converts plain English questions into SQL queries instantly. Instead of spending time writing and debugging complex database queries, you simply describe what data you want, and AI2sql generates the correct SQL for you. It supports all major databases including MySQL, PostgreSQL, SQL Server, and more.",
+            features: [
+                "Plain English to SQL conversion",
+                "Supports MySQL, PostgreSQL, SQL Server, SQLite, BigQuery",
+                "Query explanation in plain language",
+                "Schema awareness for accurate queries",
+                "Query optimization suggestions",
+                "Export and save your generated queries"
+            ],
+            useCases: ["Data Analysis", "Report Generation", "Database Queries", "Non-technical Users", "BI Workflows", "Data Exploration"],
+            pricing: "Free / $10/mo",
+            platform: "Web",
+            bestFor: "Analysts & Non-devs"
+        },
+        "Tabnine": {
+            about: "Tabnine is an AI code completion assistant that learns from your codebase and coding style to deliver highly personalized suggestions. Unlike generic tools, Tabnine can be trained on your own private code, making it ideal for enterprise teams that need AI assistance without sharing their code externally. It supports all major IDEs and 30+ languages.",
+            features: [
+                "Personalized AI trained on your private codebase",
+                "Whole-line and full-function completions",
+                "Supports 30+ programming languages",
+                "Works with VS Code, IntelliJ, PyCharm, and 20+ IDEs",
+                "Team learning — improves with your team's code patterns",
+                "Enterprise-grade privacy: code never leaves your environment"
+            ],
+            useCases: ["Code Completion", "Private Codebase Learning", "Enterprise Coding", "Team Productivity", "IDE Integration", "Secure AI Coding"],
+            pricing: "Free / $12/mo",
+            platform: "All major IDEs",
+            bestFor: "Developers & Enterprises"
+        },
+        "Webflow": {
+            about: "Webflow is a professional visual web development platform that lets designers build responsive websites without code, while still generating clean, semantic HTML and CSS. With AI-powered features now built in, Webflow bridges the gap between design tools and real web development — making it the platform of choice for design agencies, marketing teams, and startups.",
+            features: [
+                "Visual CSS grid and flexbox layout builder",
+                "CMS for dynamic content and blog posts",
+                "Built-in eCommerce functionality",
+                "AI-powered copy and design generation",
+                "Custom animations and interactions without code",
+                "Hosting, CDN, and deployment included"
+            ],
+            useCases: ["Marketing Sites", "Portfolio Sites", "Landing Pages", "CMS-driven Blogs", "eCommerce", "Agency Projects"],
+            pricing: "Free / $14/mo+",
+            platform: "Web Browser",
+            bestFor: "Designers & Marketers"
+        },
+        "ChatGPT": {
+            about: "ChatGPT by OpenAI is the world's most widely-used AI assistant, capable of writing, editing, summarizing, coding, brainstorming, answering questions, and much more. Built on GPT-4 and GPT-4o, ChatGPT understands context across long conversations and can generate high-quality content for virtually any use case — from drafting emails to analyzing complex documents.",
+            features: [
+                "Advanced text generation for writing, editing, and summarizing",
+                "GPT-4o multimodal: understands images, files, and voice",
+                "Long context window for extended conversations",
+                "Built-in code interpreter and data analysis",
+                "Image generation via DALL·E integration",
+                "Custom GPTs and plugin ecosystem"
+            ],
+            useCases: ["Content Writing", "Brainstorming", "Coding Help", "Research", "Customer Support", "Email Drafting"],
+            pricing: "Free / $20/mo",
+            platform: "Web, iOS, Android, API",
+            bestFor: "Everyone"
+        },
+        "Jasper AI": {
+            about: "Jasper AI is a purpose-built AI writing platform for marketing teams and brands. Unlike general-purpose AI assistants, Jasper is trained specifically for marketing copy — it understands brand voice, tone guidelines, and campaign goals. Teams use Jasper to produce blog posts, ad copy, social content, email campaigns, and product descriptions at scale.",
+            features: [
+                "Brand voice customization and tone settings",
+                "50+ templates for ads, blogs, emails, and social",
+                "Team collaboration with shared workspaces",
+                "SEO mode integration with Surfer SEO",
+                "Campaign workflow from brief to final copy",
+                "Multi-language content generation in 25+ languages"
+            ],
+            useCases: ["Blog Writing", "Ad Copy", "Email Campaigns", "Social Media", "Product Descriptions", "Brand Content"],
+            pricing: "$39/mo+",
+            platform: "Web, Chrome Extension",
+            bestFor: "Marketing Teams"
+        },
+        "QuillBot": {
+            about: "QuillBot is the world's leading AI-powered paraphrasing and writing enhancement tool, used by over 35 million people globally. It helps students, writers, and professionals rephrase sentences while maintaining meaning, fix grammar, summarize long texts, and check for plagiarism. QuillBot integrates directly into Google Docs and Microsoft Word for seamless workflow.",
+            features: [
+                "7 paraphrasing modes: Standard, Fluency, Formal, Simple, Creative, Expand, Shorten",
+                "AI Grammar Checker for error-free writing",
+                "Summarizer for condensing long documents",
+                "Plagiarism Checker with detailed reports",
+                "Co-Writer mode combining all tools in one workspace",
+                "Google Docs and Microsoft Word extensions"
+            ],
+            useCases: ["Academic Writing", "Paraphrasing", "Grammar Fixing", "Summarizing Research", "Content Rewriting", "Avoiding Plagiarism"],
+            pricing: "Free / $9.95/mo",
+            platform: "Web, Word, Google Docs",
+            bestFor: "Students & Writers"
+        },
+        "Sudowrite": {
+            about: "Sudowrite is an AI creative writing companion built specifically for novelists, screenwriters, and storytellers. Unlike general writing AI, Sudowrite understands narrative structure, character development, pacing, and genre conventions. It helps writers beat writer's block, brainstorm plot ideas, write better descriptions, and develop full chapters — all in your own voice.",
+            features: [
+                "Story Engine for planning and outlining novels",
+                "Write mode for continuing your story with AI",
+                "Rewrite and rephrase passages in different tones",
+                "Brainstorm mode for ideas, twists, and character arcs",
+                "Describe mode for rich sensory descriptions",
+                "Canvas mode for visual story mapping"
+            ],
+            useCases: ["Novel Writing", "Screenwriting", "Worldbuilding", "Character Development", "Plot Brainstorming", "Overcoming Writer's Block"],
+            pricing: "$10/mo+",
+            platform: "Web",
+            bestFor: "Fiction Writers"
+        },
+        "PromptPerfect": {
+            about: "PromptPerfect is a specialized AI tool that automatically optimizes prompts for AI models like ChatGPT, Midjourney, Stable Diffusion, DALL·E, and more. By analyzing your intent and the target model's strengths, PromptPerfect rewrites and enhances your prompts to get dramatically better outputs — saving time and improving results across all your AI workflows.",
+            features: [
+                "Auto-optimization for ChatGPT, GPT-4, Midjourney, Stable Diffusion, DALL·E",
+                "Prompt debugging to identify weak instructions",
+                "Prompt deployment as a shareable API endpoint",
+                "Multi-model prompt comparison",
+                "Prompt library for saving and reusing optimized prompts",
+                "Team sharing and collaboration"
+            ],
+            useCases: ["Prompt Engineering", "AI Image Prompts", "ChatGPT Optimization", "Workflow Automation", "Prompt Testing", "Team Collaboration"],
+            pricing: "Free / $9.99/mo",
+            platform: "Web, API",
+            bestFor: "AI Power Users"
+        },
+        "Copy.ai": {
+            about: "Copy.ai is an AI-powered copywriting platform used by over 10 million marketers and businesses. It combines AI writing with pre-built workflows to help teams produce marketing copy faster — from Google Ads and Facebook Ads to product descriptions, email sequences, and landing pages. Copy.ai's GTM (Go-To-Market) AI platform helps sales and marketing teams automate their entire content pipeline.",
+            features: [
+                "90+ copywriting templates for ads, emails, and social",
+                "Brand Voice for consistent tone across all content",
+                "Infobase for storing your company knowledge",
+                "GTM AI workflows for automating content pipelines",
+                "Bulk content generation for large-scale campaigns",
+                "Team workspace with collaboration and approvals"
+            ],
+            useCases: ["Ad Copywriting", "Email Marketing", "Product Descriptions", "Social Media Content", "Sales Outreach", "Landing Pages"],
+            pricing: "Free / $36/mo",
+            platform: "Web",
+            bestFor: "Marketers & Sales Teams"
+        },
+        "Midjourney": {
+            about: "Midjourney is the world's premier AI image generation tool, celebrated for producing stunning, artistic, and photorealistic visuals from text prompts. Operating through Discord (and increasingly via its own web interface), Midjourney has become the go-to tool for artists, designers, filmmakers, and creatives who want high-quality visual content generated by AI.",
+            features: [
+                "Industry-leading image quality and artistic style",
+                "V6 model with photorealistic and illustrative modes",
+                "Style reference and character consistency features",
+                "Aspect ratio and resolution control",
+                "Upscale, variation, and editing options",
+                "Remix mode for iterating on generated images"
+            ],
+            useCases: ["Concept Art", "Marketing Visuals", "Book Covers", "Character Design", "Product Mockups", "Storyboarding"],
+            pricing: "$10/mo+",
+            platform: "Discord, Web",
+            bestFor: "Artists & Designers"
+        },
+        "DALL·E 3": {
+            about: "DALL·E 3 is OpenAI's most advanced image generation model, directly integrated into ChatGPT Plus. It excels at following precise text prompts and generating images that closely match detailed descriptions — including accurate text in images, complex compositions, and specific styles. DALL·E 3 is available via ChatGPT and through the OpenAI API for developers.",
+            features: [
+                "Precise prompt adherence for complex descriptions",
+                "Accurate text rendering inside generated images",
+                "Multiple art styles from photorealistic to illustration",
+                "Integrated into ChatGPT Plus for conversational image creation",
+                "API access for developers and product integrations",
+                "Safety filters and content policy compliance"
+            ],
+            useCases: ["Marketing Graphics", "Concept Visualization", "Illustrations", "Product Mockups", "Social Media Content", "Educational Visuals"],
+            pricing: "Included in ChatGPT Plus ($20/mo)",
+            platform: "Web (ChatGPT), API",
+            bestFor: "ChatGPT Plus Users"
+        },
+        "Adobe Firefly": {
+            about: "Adobe Firefly is Adobe's family of AI creative models built directly into the Adobe Creative Suite. Designed specifically for commercial use, Firefly is trained on licensed and public domain content, making it safe to use in professional and commercial projects. It powers generative features in Photoshop, Illustrator, Premiere Pro, and other Adobe products.",
+            features: [
+                "Generative Fill and Expand in Photoshop",
+                "Text to Vector in Illustrator",
+                "Text to Image and Text Effects generation",
+                "Commercially safe — trained on licensed content",
+                "Deep integration with Photoshop, Illustrator, Premiere",
+                "Consistent style matching with reference images"
+            ],
+            useCases: ["Photo Editing", "Background Removal/Fill", "Graphic Design", "Marketing Materials", "Video Production", "Brand Visuals"],
+            pricing: "Included with Creative Cloud",
+            platform: "Web, Adobe Apps",
+            bestFor: "Creative Professionals"
+        },
+        "Canva AI": {
+            about: "Canva AI brings the power of artificial intelligence to the world's most popular design platform. With AI-powered features including Magic Studio, text-to-image generation, Magic Resize, background removal, and Magic Write, Canva makes professional design accessible to everyone. Canva AI is used by over 150 million users worldwide for social media, presentations, marketing, and more.",
+            features: [
+                "Magic Studio: AI image generation, editing, and enhancement",
+                "Magic Write: AI copywriting inside your designs",
+                "Magic Resize for instantly reformatting across platforms",
+                "Background Remover with one click",
+                "AI-powered presentation builder",
+                "Brand Kit for consistent visual identity"
+            ],
+            useCases: ["Social Media Graphics", "Presentations", "Marketing Materials", "Logo Design", "Video Content", "Infographics"],
+            pricing: "Free / $15/mo (Pro)",
+            platform: "Web, iOS, Android",
+            bestFor: "Non-designers & Teams"
+        },
+        "Stable Diffusion": {
+            about: "Stable Diffusion is a groundbreaking open-source AI image generation model developed by Stability AI. Unlike proprietary tools, Stable Diffusion can be run locally on your own hardware, giving users complete control and privacy. Its open nature has spawned a massive ecosystem of custom models, fine-tunes, LoRAs, and applications — making it the most customizable AI image tool available.",
+            features: [
+                "Fully open-source — run locally or in the cloud",
+                "Massive community of custom models and styles (Civitai, HuggingFace)",
+                "ControlNet for precise pose and composition control",
+                "Inpainting and outpainting for image editing",
+                "img2img for transforming existing images",
+                "API available for developers and product integration"
+            ],
+            useCases: ["Custom AI Art", "Local Private Generation", "Fine-tuned Style Models", "Research", "Product Integration", "Batch Generation"],
+            pricing: "Free (Open Source)",
+            platform: "Local, Web, API",
+            bestFor: "Developers & Advanced Users"
+        },
+        "Remove.bg": {
+            about: "Remove.bg is the world's leading AI background removal tool, processing over 150 million images monthly. With a single click (or API call), it instantly removes the background from any photo with pixel-perfect precision — including complex edges like hair and fur. Remove.bg is used by photographers, eCommerce stores, designers, and developers worldwide.",
+            features: [
+                "Instant background removal with one click",
+                "Handles complex edges: hair, fur, transparent objects",
+                "Bulk processing for multiple images at once",
+                "Background replacement with custom images or colors",
+                "Photoshop and Figma plugin integrations",
+                "API for automated workflows and product integration"
+            ],
+            useCases: ["Product Photography", "Profile Photos", "eCommerce Listings", "Photo Editing", "Design Assets", "Automated Pipelines"],
+            pricing: "Free (limited) / Credits from $1.99",
+            platform: "Web, API, Plugins",
+            bestFor: "Photographers & eCommerce"
+        }
+    };
+
+    function getLogoEmoji(category) {
+        return categoryEmojis[category] || "🤖";
+    }
+
+    function initToolDetailPage() {
+        const params = new URLSearchParams(window.location.search);
+        const toolName = params.get("tool");
+
+        if (!toolName) {
+            window.location.href = "index.html";
+            return;
+        }
+
+        // Find tool in all tool arrays
+        const allTools = [...codeTools, ...textTools, ...imageTools];
+        const tool = allTools.find(t => t.name === decodeURIComponent(toolName));
+
+        if (!tool) {
+            document.querySelector(".tool-detail-hero").innerHTML = `
+                <div style="text-align:center; padding: 80px 20px;">
+                    <h2 style="font-family: var(--font-display);">Tool not found</h2>
+                    <p style="margin: 12px 0 24px; color: var(--text-light);">We couldn't find this tool in our directory.</p>
+                    <a href="index.html" class="btn-secondary">Back to Directory</a>
+                </div>`;
+            return;
+        }
+
+        const details = toolDetails[tool.name] || {
+            about: tool.description + " This is a powerful AI tool that helps users boost their productivity and streamline their workflow.",
+            features: ["AI-powered functionality", "Easy to use interface", "Integrates with popular tools", "Regularly updated with new features"],
+            useCases: ["Productivity", "Automation", "Content Creation", "Workflow Enhancement"],
+            pricing: "Visit website",
+            platform: "Web",
+            bestFor: "Professionals"
+        };
+
+        // Update page title and meta
+        document.getElementById("pageTitle").textContent = `${tool.name} — AI Tool | AI-TOOLS Directory`;
+        document.getElementById("pageDesc").setAttribute("content", tool.description);
+
+        // Breadcrumb
+        document.getElementById("breadcrumbName").textContent = tool.name;
+
+        // Hero
+        document.getElementById("toolLogo").textContent = getLogoEmoji(tool.category);
+        document.getElementById("toolCategory").textContent = tool.category;
+        document.getElementById("toolName").textContent = tool.name;
+        document.getElementById("toolDescription").textContent = tool.description;
+        document.getElementById("toolNameInline").textContent = tool.name;
+
+        if (tool.badge) {
+            const badgeEl = document.getElementById("toolBadge");
+            badgeEl.textContent = tool.badge;
+            badgeEl.style.display = "inline-block";
+            badgeEl.className = `tool-detail-badge tool-badge ${tool.badge.toLowerCase()}`;
+        }
+
+        // Visit buttons
+        document.getElementById("toolVisitBtn").href = tool.url;
+        document.getElementById("sidebarVisitBtn").href = tool.url;
+
+        // About
+        document.getElementById("toolAbout").textContent = details.about;
+
+        // Features
+        const featuresList = document.getElementById("toolFeatures");
+        featuresList.innerHTML = details.features.map(f => `<li>${f}</li>`).join("");
+
+        // Use Cases
+        const useCasesGrid = document.getElementById("toolUseCases");
+        useCasesGrid.innerHTML = details.useCases.map(u => `<div class="use-case-tag">${u}</div>`).join("");
+
+        // Sidebar Quick Info
+        document.getElementById("sidebarCategory").textContent = tool.category;
+        document.getElementById("sidebarPricing").textContent = details.pricing;
+        document.getElementById("sidebarPlatform").textContent = details.platform;
+        document.getElementById("sidebarBestFor").textContent = details.bestFor;
+
+        // Related Tools (same category, excluding current)
+        const relatedTools = allTools
+            .filter(t => t.category === tool.category && t.name !== tool.name)
+            .slice(0, 4);
+
+        const relatedContainer = document.getElementById("relatedTools");
+        if (relatedTools.length > 0) {
+            relatedContainer.innerHTML = relatedTools.map(t => `
+                <a href="tool.html?tool=${encodeURIComponent(t.name)}" class="related-tool-item">
+                    <div class="related-tool-emoji">${getLogoEmoji(t.category)}</div>
+                    <div class="related-tool-info">
+                        <div class="related-tool-name">${t.name}</div>
+                        <div class="related-tool-cat">${t.category}</div>
+                    </div>
+                    <span class="related-tool-arrow">→</span>
+                </a>
+            `).join("");
+        } else {
+            relatedContainer.innerHTML = `<p style="font-size:13px;color:var(--text-light);">No related tools found.</p>`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", initToolDetailPage);
+    </script>
+</body>
+</html>
